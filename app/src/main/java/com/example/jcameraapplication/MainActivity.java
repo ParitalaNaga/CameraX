@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cameralibrary.CameraXLibrary;
+
 public class MainActivity extends AppCompatActivity {
 
     Button button, button1;
@@ -27,22 +29,17 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (TextUtils.isEmpty(widtheditText.getText().toString())) {
+                if(TextUtils.isEmpty(widtheditText.getText().toString())){
                     Toast.makeText(MainActivity.this, "Fileds can't be empty", Toast.LENGTH_SHORT).show();
 
-                } else if (TextUtils.isEmpty(heighteditText.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "Fileds can't be empty", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    CameraXLibrary.camcapture(Integer.parseInt(widtheditText.getText().toString()), Integer.parseInt(heighteditText.getText().toString()), getApplicationContext(), new CaptureCameraX() {
-                        @Override
-                        public void cmeraxpreview(int width, int height) {
-
-                        }
-                    });
                 }
+                else if(TextUtils.isEmpty(heighteditText.getText().toString())){
+                    Toast.makeText(MainActivity.this, "Fileds can't be empty", Toast.LENGTH_SHORT).show();
 
+                }
+                else{
+
+                }
             }
 
         });

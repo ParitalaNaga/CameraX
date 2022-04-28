@@ -33,9 +33,10 @@ public class CameraXLibrary extends AppCompatActivity {
     private int REQUEST_CODE_PERMISSIONS = 101;
     private final String[] REQUIRED_PERMISSIONS = new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE"};
     AutoFitTextureView textureView;
-    int width1;
-    int height1;
+    static int width1;
+    static int height1;
 
+    static ImageCaptureinterface imageCapture1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,23 +151,17 @@ public class CameraXLibrary extends AppCompatActivity {
         }
     }
 
-    public static void camcapture(int width, int height, Context context) {
-
-        int width1 = width;
-        int height1 = height;
-
-        Intent intent = new Intent(context, CameraX.class);
+    public static void imagecaptureresult(Context context, ImageCaptureinterface
+            imageCaptureinterface) {
+        imageCapture1 = imageCaptureinterface;
+        Intent intent = new Intent(context, CameraXLibrary.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
 
-
     }
 
-    public interface CaptureCameraX {
-
-        void cmeraxpreview(int width, int height);
-
-
+    public interface ImageCaptureinterface {
+        void resultofcapture(ImageCapture resultofcapture);
     }
 
 
